@@ -28,7 +28,7 @@ function CommitChanges {
             }
 
             git commit -m $commitMessage
-            git push
+            git push -u origin $newBranch
 
             $proceed = YesNoAlert -title "Move to Main Branch" - $question "The changes from the branch: $newBranch will not be available until it is merged with main branch. Do you want to proceed? "
             if ($proceed) {
