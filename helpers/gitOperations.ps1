@@ -1,3 +1,4 @@
+..\Powershell-Utilities\helpers\alerts.ps1
 function FetchFromGit {
     git fetch --all
 }
