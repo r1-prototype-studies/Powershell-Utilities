@@ -1,3 +1,4 @@
+..\Powershell-Utilities\helpers\alerts.ps1
 function FetchFromGit {
     git fetch --all
 }
@@ -6,7 +7,6 @@ function CommitChanges {
     $currentBranch = git branch --show-current
     write-host "Current GIT branch is $currentBranch"
 
-    #git status
     if (!([string]::IsNullOrEmpty($(git status --porcelain)))) {
         
         if ($currentBranch.ToLower() -eq "main" ) {
@@ -48,8 +48,6 @@ function CommitChanges {
 
 function InitializeGit {
     CommitChanges
-    #git status
-    #git checkout main
 }
 
 #clear-host

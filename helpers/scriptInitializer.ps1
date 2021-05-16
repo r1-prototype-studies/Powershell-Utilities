@@ -1,6 +1,6 @@
 #"$PSScriptRoot\helpers\gitOperations.ps1"
-#..\Powershell-Utilities\helpers\gitOperations.ps1
-
+& ..\Powershell-Utilities\helpers\gitOperations.ps1
+& ..\Powershell-Utilities\helpers\alerts.ps1
 # Set execution policy
 #Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 
@@ -20,7 +20,8 @@ Get-InstalledModule -Name "posh-git"
 Import-Module posh-git
 #>
 
-InitializeGit
+#InitializeGit
+
 
 
 
