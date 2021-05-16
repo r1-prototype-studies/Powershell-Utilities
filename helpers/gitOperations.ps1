@@ -30,7 +30,7 @@ function CommitChanges {
             git commit -m $commitMessage
             git push --set-upstream origin $newBranch
 
-            $proceed = YesNoAlert -title "Move to Main Branch" - $question "The changes from the branch: $newBranch will not be available until it is merged with main branch. Do you want to proceed? "
+            $proceed = YesNoAlert -title "Move to Main Branch" -question "The changes from the branch: $newBranch will not be available until it is merged with main branch. Do you want to proceed? "
             if ($proceed) {
                 git checkout main
                 git pull --force
@@ -40,11 +40,11 @@ function CommitChanges {
             
         }
     }
+    else {
+        # tree is clean
+            
+    }
 } 
-else {
-    # tree is clean
-        
-}
 
 function InitializeGit {
     CommitChanges
@@ -52,5 +52,5 @@ function InitializeGit {
     #git checkout main
 }
 
-clear-host
+#clear-host
 
