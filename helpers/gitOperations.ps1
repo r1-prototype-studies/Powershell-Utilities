@@ -19,7 +19,7 @@ function CommitChanges {
 
         git status
             
-        $proceed = YesNoAlert -title "Changed Detected" -question "The changes will be committed and pushed to GIT branch: $newBranch. Do you want to proceed? "
+        $proceed = YesNoAlert -title "Changed Detected" -question "The changes will be committed and pushed to GIT branch: $currentBranch. Do you want to proceed? "
         if ($proceed) {
             git add .
             $commitMessage = ""
@@ -30,19 +30,19 @@ function CommitChanges {
             git commit -m $commitMessage
             git push --set-upstream origin $currentBranch
 
-            $proceed = YesNoAlert -title "Move to Main Branch" -question "The changes from the branch: $newBranch will not be available until it is merged with main branch. Do you want to proceed? "
+            $proceed = YesNoAlert -title "Move to Main Branch" -question "The changes from the branch: $currentBranch will not be available until it is merged with main branch. Do you want to proceed? "
             if ($proceed) {
                 git checkout main
                 git pull --force
             }
         }
         else {
-            
+            exit
         }
     }
     else {
-        # tree is clean
-            
+        git checkout main
+        git pull --force
     }
 } 
 
