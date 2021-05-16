@@ -11,10 +11,10 @@ function CommitChanges {
         
         if ($currentBranch.ToLower() -eq "main" ) {
             $branchDate = $(Get-Date).ToString('yyyyMMddHHmm');
-            $newBranch = "$($env:UserDomain)_$($env:UserName)_$($env:ComputerName)_$branchDate"
+            $currentBranch = "$($env:UserDomain)_$($env:UserName)_$($env:ComputerName)_$branchDate"
         
-            Write-Host "Creating new branch $newBranch..."
-            git checkout -b $newBranch     
+            Write-Host "Creating new branch $currentBranch..."
+            git checkout -b $currentBranch     
         }
 
         git status
@@ -28,7 +28,7 @@ function CommitChanges {
             }
 
             git commit -m $commitMessage
-            git push --set-upstream origin $newBranch
+            git push --set-upstream origin $currentBranch
 
             $proceed = YesNoAlert -title "Move to Main Branch" -question "The changes from the branch: $newBranch will not be available until it is merged with main branch. Do you want to proceed? "
             if ($proceed) {
